@@ -1,0 +1,30 @@
+﻿@using CFT.Models
+@model Applications
+
+@{
+    ViewBag.Title = "Приложение " + @Model.NameApplication;
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<div>
+    <h4> @Model.NameApplication</h4>
+    <hr />
+    <dl>
+        <dt>Название приложения</dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.NameApplication)
+        </dd>
+
+        <dt>Баги</dt> 
+
+        <dd>
+            <ul>
+                @foreach (BugTrackers bug in Model.BugTrackers)
+                {
+                <li>Название: @bug.Name  Описание: @bug.Description Дата окончания разработки: @bug.DateEndDevelopment </li>
+                }
+            </ul>
+        </dd>
+    </dl>
+</div>

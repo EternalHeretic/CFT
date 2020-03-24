@@ -1,0 +1,37 @@
+﻿@{
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+@model CFT.Models.BugTrackers
+<h2>Удаление книги</h2>
+<dl>
+    <dt>Название</dt>
+    <dd>
+        @Html.DisplayFor(model => model.Name)
+    </dd>
+
+    <dt>Приложение</dt>
+    <dd>
+        @Html.DisplayFor(model => model.ApplicationId, ViewBag.Applications as SelectList)
+    </dd>
+
+    <dt>Описание</dt>
+    <dd>
+        @Html.DisplayFor(model => model.Description)
+    </dd>
+    
+    <dt>Дата окончания разработки</dt>
+    <dd>
+        @Html.DisplayFor(model => model.DateEndDevelopment)
+    </dd>
+    
+    <dt>Email</dt>
+    <dd>
+        @Html.DisplayFor(model => model.Email)
+    </dd>
+
+</dl>
+
+@using (Html.BeginForm())
+{
+    <input type="submit" value="Удалить" />
+}

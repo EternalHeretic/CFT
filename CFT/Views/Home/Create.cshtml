@@ -1,0 +1,61 @@
+﻿@model CFT.Models.BugTrackers
+
+@{
+    ViewBag.Title = "Добавление игрока";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>Добавление нового бага</h2>
+
+@using (Html.BeginForm())
+{
+    @Html.ValidationSummary(true)
+    <fieldset>
+        <legend>Баг</legend>
+
+        <p>
+            Название<br />
+            <div class="editor-field">
+                @Html.EditorFor(model => model.Name)
+                @Html.ValidationMessageFor(model => model.Name)
+            </div>
+        </p>
+
+        <p>
+            Приложение <br />
+            <div class="editor-field">
+                @Html.DropDownListFor(m => m.ApplicationId, ViewBag.Applications as SelectList)
+                @Html.ValidationMessageFor(model => model.ApplicationId)
+            </div>
+        </p>
+
+        <p>
+            Описание  <br />
+            <div class="editor-field">
+                @Html.EditorFor(model => model.Description)
+                @Html.ValidationMessageFor(model => model.Description)
+            </div>
+        </p>
+        <p>
+            Дата окончания разработки <br />
+            <div class="editor-field">
+                @Html.EditorFor(model => model.DateEndDevelopment)
+                @Html.ValidationMessageFor(model => model.DateEndDevelopment)
+            </div>
+        </p>
+        <p>
+            Email <br />
+            <div class="editor-field">
+                @Html.EditorFor(model => model.Email)
+                @Html.ValidationMessageFor(model => model.Email)
+            </div>
+        </p>
+
+        <p>
+            <input type="submit" value="Добавить баг" />
+        </p>
+    </fieldset>
+}
+<div>
+    @Html.ActionLink("К списку багов", "Index")
+</div>

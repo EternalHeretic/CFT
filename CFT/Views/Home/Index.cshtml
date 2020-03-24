@@ -1,0 +1,48 @@
+﻿@model IEnumerable<CFT.Models.BugTrackers>
+@{
+    ViewBag.Title = "Каталог игроков";
+}
+
+<h2>Каталог багов</h2>
+<p>
+    @Html.ActionLink("Добавить баг", "Create")
+</p>
+<table>
+    <tr>
+        <th>Назавание</th>
+        <th>Приложение</th>
+        <th>Описание</th>
+        <th>Дата окончания разработки</th>
+        <th>Email</th>
+        <th></th>
+    </tr>
+    <br />
+    @foreach (var item in Model)
+    {
+        <tr>
+            <td>
+                @Html.DisplayFor(Model => item.Name)
+            </td>
+            <td>
+                @Html.DisplayFor(Model => item.Applications.NameApplication)
+            </td>
+            <td>
+                @Html.DisplayFor(Model => item.Description)
+            </td>
+            <td>
+                @Html.DisplayFor(Model => item.DateEndDevelopment)
+            </td>
+            <td>
+                @Html.DisplayFor(Model => item.Email)
+            </td>
+            <td>
+                @Html.ActionLink("Редактировать", "Edit", new { id = item.BugTrackerId }) |
+                @Html.ActionLink("Удалить", "Delete", new { id = item.BugTrackerId })
+            </td>
+        </tr>
+    }
+</table>
+</br>
+<p>
+    @Html.ActionLink("Баги приложений", "ApplicationDetails")
+</p>

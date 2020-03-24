@@ -1,0 +1,40 @@
+﻿@{
+    ViewBag.Title = "Редактировать Bug";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+@model CFT.Models.BugTrackers
+<h2>Bug № @Model.BugTrackerId</h2>
+
+
+@using (Html.BeginForm("Edit", "Home", FormMethod.Post))
+{
+<fieldset>
+    @Html.HiddenFor(m => m.BugTrackerId)
+    <p>
+        @Html.LabelFor(m => m.Name, "Название")
+        <br />
+        @Html.EditorFor(m => m.Name)
+    </p>
+    <p>
+        @Html.LabelFor(m => m.ApplicationId, "Приложение")
+        <br />
+        @Html.DropDownListFor(m => m.ApplicationId, ViewBag.Applications as SelectList)
+    </p>
+    <p>
+        @Html.LabelFor(m => m.Description, "Описание")
+        <br />
+        @Html.EditorFor(m => m.Description)
+    </p>
+    <p>
+        @Html.LabelFor(m => m.DateEndDevelopment, "Дата окончания разработки")
+        <br />
+        @Html.EditorFor(m => m.DateEndDevelopment)
+    </p>
+    <p>
+        @Html.LabelFor(m => m.Email, "Email")
+        <br />
+        @Html.EditorFor(m => m.Email)
+    </p>
+    <p><input type="submit" value="Отправить" /></p>
+</fieldset>
+}
